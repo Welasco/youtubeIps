@@ -21,12 +21,15 @@ jobs:
         run: |
           sudo apt update
           sudo apt install whois -y
-          whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169-test.txt
+          whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169.txt
           ls -la
           git status
-          cat youtube-AS15169-test.txt
+          git add *
+          git commit -m "Adding auto compiled youtube-AS15169.txt"
+          git push
+          cat youtube-AS15169.txt
 
-      - name: GIT Push youtube-AS15169.txt file
-        uses: actions-x/commit@v6
-        with:
-          message: Adding auto compiled youtube-AS15169.txt
+      # - name: GIT Push youtube-AS15169.txt file
+      #   uses: actions-x/commit@v6
+      #   with:
+      #     message: Adding auto compiled youtube-AS15169.txt
