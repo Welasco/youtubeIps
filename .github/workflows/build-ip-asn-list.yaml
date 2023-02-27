@@ -28,10 +28,10 @@ jobs:
           git config --global user.name "GitHub Action"
           git add *
           git commit -m "Adding auto compiled youtube-AS15169.txt"
-          git push
+          #git push
           cat youtube-AS15169-test.txt
 
-      # - name: GIT Push youtube-AS15169.txt file
-      #   uses: actions-x/commit@v6
-      #   with:
-      #     message: Adding auto compiled youtube-AS15169.txt
+      - name: GIT Push youtube-AS15169.txt file
+        uses: actions-x/commit@v6
+        with:
+          message: Adding auto compiled youtube-AS15169.txt
