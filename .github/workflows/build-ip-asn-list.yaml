@@ -24,6 +24,8 @@ jobs:
           whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169.txt
           ls -la
           git status
+          git config --global user.email "action@git.local"
+          git config --global user.name "GitHub Action"
           git add *
           git commit -m "Adding auto compiled youtube-AS15169.txt"
           git push
