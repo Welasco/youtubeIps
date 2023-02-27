@@ -21,9 +21,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install whois -y
-          whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169.txt
+          whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169-test.txt
           ls -la
-          cat youtube-AS15169.txt
+          cat youtube-AS15169-test.txt
 
       - name: GIT Push youtube-AS15169.txt file
         uses: actions-x/commit@v6
