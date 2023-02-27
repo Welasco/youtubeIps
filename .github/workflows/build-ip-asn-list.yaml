@@ -19,8 +19,8 @@ jobs:
       - name: Generate IP List
         shell: bash
         run: |
-          apt update
-          apt install whois -y
+          sudo apt update
+          sudo apt install whois -y
           whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > youtube-AS15169.txt
           ls -la
           cat youtube-AS15169.txt
