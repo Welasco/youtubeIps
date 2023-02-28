@@ -34,8 +34,11 @@ jobs:
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git add *
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git status
           git push
           cat "${{ env.YOUTUBEFILE }}"
+          git status
+
 
       # - name: GIT Push youtube-AS15169.txt file
       #   uses: actions-x/commit@v6
