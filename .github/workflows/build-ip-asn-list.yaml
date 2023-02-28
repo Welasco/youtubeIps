@@ -30,11 +30,6 @@ jobs:
           sudo apt install whois -y
           whois -h whois.radb.net -- '-i origin AS15169' | grep ^route | sed -e 's/route://g' -e 's/route6://g' -e 's/ //g' > "${{ env.YOUTUBEFILETEMP }}"
           ls -la
-          git add *
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
-          cat "${{ env.YOUTUBEFILE }}"
-          (git status) || true
           file1="${{ env.YOUTUBEFILE }}"
           file2="${{ env.YOUTUBEFILETEMP }}"
           if cmp -s "$file1" "$file2"; then
@@ -44,6 +39,8 @@ jobs:
               printf 'The file "%s" is different from "%s"\n' "$file1" "$file2"
               cp $file2 $file1
               rm $file2
+              git config --global user.email "username@users.noreply.github.com"
+              git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
               git add *
               git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
               git push
