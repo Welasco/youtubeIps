@@ -37,7 +37,7 @@ jobs:
           git status
           git push
           cat "${{ env.YOUTUBEFILE }}"
-          git status
+          (git status) || true
 
 
       # - name: GIT Push youtube-AS15169.txt file
